@@ -1,6 +1,0 @@
-resources:
-  - ./service.yaml
-  - ./route.yaml
-  - ./kafka-properties.yaml
-  - ./topic.yaml
-  - ./deployment.yaml

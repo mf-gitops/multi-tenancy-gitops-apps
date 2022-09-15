@@ -1,0 +1,19 @@
+---
+# Source: base/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: wkfn-metric-samples
+  labels:
+    app.kubernetes.io/instance: wkfn-metric-samples
+data:
+  IBMwkfn_GLOBAL_USEOBJECTSTATUS: 'true'
+  IBMwkfn_OBJECTS_SUBSCRIPTIONS: '!$SYS*'
+  IBMwkfn_CONNECTION_CHANNEL: MONITORING_CHL
+  IBMwkfn_CONNECTION_CONNNAME: qm1-ibm-wkfn.prod.svc.cluster.local(1414)
+  IBMwkfn_OBJECTS_QUEUES: '!SYSTEM.*,!Awkfn.*,*'
+  IBMwkfn_GLOBAL_LOGLEVEL: INFO
+  IBMwkfn_CONNECTION_QUEUEMANAGER: QM1
+  IBMwkfn_OBJECTS_TOPICS: '!*'
+  IBMwkfn_GLOBAL_USEPUBLICATIONS: 'false'
+  IBMwkfn_GLOBAL_CONFIGURATIONFILE: ''

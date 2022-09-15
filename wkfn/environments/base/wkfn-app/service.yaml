@@ -1,0 +1,23 @@
+kind: Service
+apiVersion: v1
+metadata:
+  annotations:
+    app.openshift.io/vcs-ref: master
+    app.openshift.io/vcs-uri: 'https://github.com/schijioke-uche/shoprite-mobile-app.git'
+    openshift.io/generated-by: OpenShiftWebConsole
+  name: wakefern-mobile-proxy-app-v1
+  #namespace: wkfn
+  labels:
+    app: wakefern-mobile-proxy-app-v1
+    app.kubernetes.io/component: wakefern-mobile-proxy-app-v1
+    app.kubernetes.io/instance: wakefern-mobile-proxy-app-v1
+    app.kubernetes.io/part-of: wakefern-mobile-proxy-app-v1
+spec:
+  ports:
+    - name: 8080-tcp
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: wakefern-mobile-proxy-app-v1
+    deploymentconfig: wakefern-mobile-proxy-app-v1  

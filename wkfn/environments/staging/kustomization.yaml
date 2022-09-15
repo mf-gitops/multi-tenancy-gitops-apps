@@ -1,0 +1,4 @@
+resources:
+  - wkfn-qm01/
+  - wkfn-metric-samples/
+  - wkfn-spring-app/

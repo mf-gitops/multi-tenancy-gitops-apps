@@ -1,0 +1,33 @@
+apiVersion: wkfn.ibm.com/v1beta1
+kind: QueueManager
+metadata:
+  name: qm1
+  annotations:
+    argocd.argoproj.io/sync-wave: "300"
+    helm.sh/hook-weight: "300"
+spec:
+  template:
+    pod:
+      volumes:
+        - name: config-volume-scripts
+          configMap:
+            name: scripts-configmap
+            defaultMode: 0777
+        - name: dynamic-config-volume-wkfnsc
+          configMap:
+            name: dynamic-wkfnsc-configmap
+            defaultMode: 0777
+      containers:
+        - env:
+            - name: wkfnSNOAUT
+              value: 'yes'
+          name: qmgr
+          volumeMounts:
+          - name: config-volume-scripts
+            mountPath: /wkfn-config
+            readOnly: true
+            #optional: true
+          - name: dynamic-config-volume-wkfnsc
+            mountPath: /dynamic-wkfn-config-wkfnsc
+            readOnly: true
+            #optional: true

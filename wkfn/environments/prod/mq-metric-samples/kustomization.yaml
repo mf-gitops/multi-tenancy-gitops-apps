@@ -1,0 +1,5 @@
+resources:
+ - ../../base/wkfn-metric-samples
+ - configmap/configmap.yaml
+patchesStrategicMerge:
+ - wkfn-spring-app/deployment.yaml

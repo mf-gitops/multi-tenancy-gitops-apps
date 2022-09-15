@@ -1,0 +1,4 @@
+resources:
+#- certificates/wkfn-selfsigned-certificate/wkfn-self-signed-ca-certificate.yaml
+#- cluster-issuers/wkfn-selfsigned-clusterissuer/wkfn-self-signed-clusterissuer.yaml
+#- cluster-issuers/selfsigned-clusterissuer/clusterissuer.yaml

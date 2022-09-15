@@ -1,3 +1,0 @@
-resources:
-# Secrets
-- secrets/ibm-entitled-registry-credentials-secret.yaml

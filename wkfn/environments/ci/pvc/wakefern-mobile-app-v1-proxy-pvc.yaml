@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: wakefern-mobile-app-v1-proxy-pvc
+  #namespace: wkfn
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+  storageClassName: ibmc-file-retain-gold
+  volumeMode: Filesystem
+---
+kind: Secret
+apiVersion: v1
+metadata:
+  name: wakefern-mobile-proxy-app-v1-generic-webhook-secret
+  namespace: wkfn
+data:
+  WebHookSecretKey: <PROVIDE ENCODED WEBHOOKKEY>
+type: Opaque

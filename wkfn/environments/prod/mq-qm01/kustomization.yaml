@@ -1,0 +1,23 @@
+resources:
+ - ../../base/wkfn-qm01
+ #- certificates/prod-wkfn-client-certificate.yaml
+ #- certificates/prod-wkfn-server-certificate.yaml
+ #- secrets/wkfn-client-jks-password-secret.yaml
+
+# Add the configMap that will be used for dynamic updates, this should be used queue manager wide i.e. stay the same in each environment.
+components:
+- components/dynamic-wkfnsc/generic-qmgr
+- components/scripts
+
+generatorOptions:
+ disableNameSuffixHash: true
+# We use a configMapGenerator because it allows us to build up the wkfnsc from regular wkfnSC files.
+configMapGenerator:
+# Create an wkfnSC configMap using generic wkfnSC which will be added to all queue managers and applied during bootstrap.
+- name: wkfnsc-configmap
+  behavior: create
+  files:
+  - configmap/static-definitions.wkfnsc
+patchesStrategicMerge:
+ - queuemanager/queuemanager.yaml
+ - components/dynamic-wkfnsc/generic-qmgr/queuemanager.yaml

@@ -1,0 +1,22 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: wakefern-mobile-proxy-app-v1
+  #namespace: wkfn
+  labels:
+    app: wakefern-mobile-proxy-app-v1
+    app.kubernetes.io/component: wakefern-mobile-proxy-app-v1
+    app.kubernetes.io/instance: wakefern-mobile-proxy-app-v1
+    app.kubernetes.io/part-of: wakefern-mobile-proxy-app-v1
+spec:
+  path: /
+  to:
+    kind: Service
+    name: wakefern-mobile-proxy-app-v1
+    weight: 100
+  port:
+    targetPort: 8080-tcp
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  wildcardPolicy: None 

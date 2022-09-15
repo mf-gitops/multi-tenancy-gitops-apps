@@ -1,0 +1,10 @@
+resources:
+ - ../../base/wkfn-spring-app
+ - configmap/configmap.yaml
+ - configmap/configmap-ccdt.yaml
+ # - deployment/hooks/post-sync-job.yaml
+ # - certificates/dev-wkfn-client-certificate.yaml
+ # - certificates/dev-wkfn-server-certificate.yaml
+ # - secrets/wkfn-client-jks-password-secret.yaml
+patchesStrategicMerge:
+ - deployment/deployment.yaml

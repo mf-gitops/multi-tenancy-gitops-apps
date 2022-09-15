@@ -1,0 +1,23 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  labels:
+    app: wkfn-qm-post-stage
+  name: wkfn-qm-post-stage
+spec:
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        annotations:
+          argocd.argoproj.io/compare-options: IgnoreExtraneous
+          argocd.argoproj.io/sync-options: Prune=false
+        labels:
+          tekton.dev/pipeline: ibm-wkfn-promote-stage-prod
+        generateName: ibm-wkfn-promote-stage-prod-
+      spec:
+        params:
+        - name: git-url
+          value: https://github.com/${GIT_ORG}/wkfn-qm01.git
+        pipelineRef:
+          name: ibm-wkfn-promote-stage-prod

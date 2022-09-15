@@ -1,0 +1,71 @@
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  annotations:
+    app.openshift.io/vcs-ref: master
+    app.openshift.io/vcs-uri: 'https://github.com/schijioke-uche/shoprite-mobile-app.git'
+    openshift.io/generated-by: OpenShiftWebConsole
+  name: wakefern-mobile-proxy-app-v1
+  #namespace: wkfn
+  labels:
+    app: wakefern-mobile-proxy-app-v1
+    app.kubernetes.io/component: wakefern-mobile-proxy-app-v1
+    app.kubernetes.io/instance: wakefern-mobile-proxy-app-v1
+    app.kubernetes.io/part-of: wakefern-mobile-proxy-app-v1
+spec:
+  strategy:
+    type: Rolling
+    rollingParams:
+      updatePeriodSeconds: 1
+      intervalSeconds: 1
+      timeoutSeconds: 600
+      maxUnavailable: 25%
+      maxSurge: 25%
+    resources: {}
+    activeDeadlineSeconds: 21600
+  triggers:
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - wakefern-mobile-proxy-app-v1
+        from:
+          kind: ImageStreamTag
+          namespace: wkfn
+          name: 'wakefern-mobile-proxy-app-v1:latest'
+    - type: ConfigChange
+  replicas: 1
+  revisionHistoryLimit: 10
+  test: false
+  selector:
+    app: wakefern-mobile-proxy-app-v1
+    deploymentconfig: wakefern-mobile-proxy-app-v1
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: wakefern-mobile-proxy-app-v1
+        deploymentconfig: wakefern-mobile-proxy-app-v1
+    spec:
+      volumes:
+        - name: wakefern-mobile-app-v1-proxy-pvc
+          persistentVolumeClaim:
+            claimName: wakefern-mobile-app-v1-proxy-pvc
+      containers:
+        - name: wakefern-mobile-proxy-app-v1
+          image: 'wakefern-mobile-proxy-app-v1:latest'
+          envFrom:
+            - configMapRef:
+                name: wakefern-mobile-proxy-app-v1-configmap
+          resources: {}
+          volumeMounts:
+            - name: wakefern-mobile-app-v1-proxy-pvc
+              mountPath: '/var/lib/storage/pvc/v1/proxy/app '
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
