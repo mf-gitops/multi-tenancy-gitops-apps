@@ -43,7 +43,7 @@ resources:
 - tasks/ibm-java-maven-test-v2-6-13.yaml
 - tasks/ibm-setup-v2-6-13.yaml
 - tasks/ibm-tag-release-v2-6-13.yaml
-- pvc/wakefern-mobile-app-v1-proxy-pvc
+- pvc/wakefern-mobile-app-v1-proxy-pvc.yaml
 #- tasks/wkfn-metrics-build-tag-push.yaml
 
 # Automated promotion process triggers
