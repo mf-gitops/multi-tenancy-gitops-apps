@@ -1,7 +1,7 @@
 resources:
 #- certificates/ci-wkfn-client-certificate.yaml
 #- certificates/ci-wkfn-server-certificate.yaml
-- configmaps/gitops-repo-configmap.yaml
+#- configmaps/gitops-repo-configmap.yaml
 - configmaps/wakefern-mobile-proxy-app-v1.yaml
 - buildconfig/buildconfig.yaml
 #- eventlisteners/cntk-event-listener.yaml
