@@ -24,7 +24,7 @@ resources:
 #- secrets/artifactory-access-secret.yaml
 - secrets/git-credentials-secret.yaml
 - secrets/ibm-entitled-registry-credentials-secret.yaml
-- secrets/wakefern-mobile-proxy-app-v1-secret
+- secrets/wakefern-mobile-proxy-app-v1-secret.yaml
 #- secrets/wkfn-client-jks-password-secret.yaml
 - imagestream/imagestream.yaml
 - tasks/10-gitops.yaml
