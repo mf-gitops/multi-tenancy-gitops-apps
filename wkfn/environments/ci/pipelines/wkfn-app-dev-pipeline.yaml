@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: wkfn-spring-app-dev
+  name: wkfn-app-dev
   annotations:
     app.openshift.io/runtime: openjdk
     app.openshift.io/builder: maven

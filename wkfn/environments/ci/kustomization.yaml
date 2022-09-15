@@ -9,11 +9,11 @@ resources:
 #- triggertemplates/wkfn-qm-dev.yaml
 #- triggertemplates/wkfn-spring-app-dev.yaml
 #- pipelines/wkfn-metric-samples-dev-pipeline.yaml
-- pipelines/ibm-test-pipeline-for-dev.yaml
-- pipelines/ibm-test-pipeline-for-stage.yaml
+#- pipelines/ibm-test-pipeline-for-dev.yaml
+#- pipelines/ibm-test-pipeline-for-stage.yaml
 #- pipelines/java-maven-dev-pipeline.yaml
-- pipelines/wkfn-pipeline-dev.yaml
-- pipelines/wkfn-spring-app-dev-pipeline.yaml
+#- pipelines/wkfn-pipeline-dev.yaml
+- pipelines/wkfn-app-dev-pipeline.yaml
 - roles/custom-pipeline-sa-clusterrole.yaml
 - roles/custom-pipeline-sa-role.yaml
 - roles/custom-ci-pipeline-sa-rolebinding.yaml
